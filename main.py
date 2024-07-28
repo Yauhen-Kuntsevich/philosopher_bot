@@ -25,7 +25,6 @@ bot_commands = [
 ]
 
 
-
 @dp.message(CommandStart())
 async def handle_start(message: types.Message):
     await message.answer(
@@ -56,11 +55,10 @@ async def handle_help(message: types.Message):
 async def handle_topic_choice(message: types):
     if message.text in topics:
         random_quote = get_random_quote_by_topic(message.text)
-
-    await message.answer(
-        text=f'{random_quote.get('text')}\n\n<b>{random_quote.get('author')}</b>',
-        parse_mode='HTML'
-    )
+        await message.answer(
+            text=f'{random_quote.get('text')}\n\n<b>{random_quote.get('author')}</b>',
+            parse_mode='HTML'
+        )
 
 
 async def main():
