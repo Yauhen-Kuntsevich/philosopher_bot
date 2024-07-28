@@ -1,9 +1,8 @@
-from data.quotes import QUOTES
+from data.quotes import topics 
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 
 def get_topics_keyboard() -> ReplyKeyboardMarkup:    
-    topics = QUOTES.keys()
     topics_buttons = [KeyboardButton(text=topic) for topic in topics]
 
     topics_buttons_row: list[KeyboardButton] = []

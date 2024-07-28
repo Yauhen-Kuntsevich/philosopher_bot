@@ -12,3 +12,6 @@ class Quote:
 
 with open('data/quotes.json', 'r') as file:
     QUOTES: dict[str, list[Quote]] = json.load(file)
+
+
+topics = QUOTES.keys()
