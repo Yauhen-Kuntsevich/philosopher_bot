@@ -11,6 +11,4 @@ class Quote:
 
 
 with open('data/quotes.json', 'r') as file:
-    quotes: dict[str, list[Quote]] = json.load(file)
-
-print(quotes.get('Час ⏳')[1].get('Id'))
+    QUOTES: dict[str, list[Quote]] = json.load(file)

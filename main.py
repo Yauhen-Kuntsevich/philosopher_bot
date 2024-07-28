@@ -9,6 +9,7 @@ from aiogram.filters import Command, CommandStart
 from constants.bot_token import BOT_TOKEN
 from constants.philosopher_bot_commands import BOT_COMMANDS
 from constants.messages import START_MESSAGE
+from constants.keyboards import topics_keyboard
 
 
 bot = Bot(token=BOT_TOKEN)
@@ -26,6 +27,14 @@ async def handle_start(message: types.Message):
     await message.answer(
         text=f'Вітанкі, {message.from_user.full_name}!\n\n{START_MESSAGE}',
         parse_mode='HTML'
+    )
+
+
+@dp.message(Command('topic'))
+async def handle_topic(message: types.Message):
+    await message.answer(
+        text='На якую тэму табе хочацца атрымаць цытату?',
+        reply_markup=topics_keyboard
     )
 
 
