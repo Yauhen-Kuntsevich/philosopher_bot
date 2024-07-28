@@ -4,14 +4,21 @@ import logging
 from aiogram import Bot
 from aiogram import Dispatcher
 from aiogram import types
-from aiogram.filters import CommandStart
+from aiogram.filters import Command, CommandStart
 
-from bot_token import BOT_TOKEN
-from messages import START_MESSAGE
+from constants.bot_token import BOT_TOKEN
+from constants.philosopher_bot_commands import BOT_COMMANDS
+from constants.messages import START_MESSAGE
 
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
+
+
+bot_commands = [
+    types.BotCommand(command='/help', description='Як я працую?'),
+]
+
 
 
 @dp.message(CommandStart())
@@ -22,8 +29,21 @@ async def handle_start(message: types.Message):
     )
 
 
+@dp.message(Command('help'))
+async def handle_help(message: types.Message):
+    pass
+
+
+@dp.message(Command('works'))
+async def handle_works(message: types.Message):
+    pass
+
+
 async def main():
     logging.basicConfig(level=logging.DEBUG)
+    
+    await bot.set_my_commands(BOT_COMMANDS)
+
     await dp.start_polling(bot)
 
 
