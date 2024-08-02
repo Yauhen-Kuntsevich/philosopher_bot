@@ -11,16 +11,18 @@ class Quote:
 
 
 with open("data/quotes.json", "r") as file:
-    QUOTES: dict[str, list[Quote]] = json.load(file)
+    QUOTES_DICT: dict[str, list[Quote]] = json.load(file)
 
 
 def get_authors():
     authors = []
-    for quote in QUOTES:
-        authors.append(quote.get("author"))
+
+    for topic in QUOTES_DICT.keys():
+        for quote in QUOTES_DICT.get(topic):
+            authors.append(quote.get("author"))
 
     return authors
 
 
-TOPICS = QUOTES.keys()
+TOPICS = QUOTES_DICT.keys()
 AUTHORS = get_authors()
