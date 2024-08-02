@@ -7,11 +7,20 @@ class Quote:
     id: int
     author: str
     text: str
-    image_path: str = ''
+    image_path: str = ""
 
 
-with open('data/quotes.json', 'r') as file:
+with open("data/quotes.json", "r") as file:
     QUOTES: dict[str, list[Quote]] = json.load(file)
 
 
-topics = QUOTES.keys()
+def get_authors():
+    authors = []
+    for quote in QUOTES:
+        authors.append(quote.get("author"))
+
+    return authors
+
+
+TOPICS = QUOTES.keys()
+AUTHORS = get_authors()
