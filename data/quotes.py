@@ -21,7 +21,7 @@ def get_authors():
         for quote in QUOTES_DICT.get(topic):
             authors.append(quote.get("author"))
 
-    return authors
+    return set(authors)
 
 
 TOPICS = QUOTES_DICT.keys()
