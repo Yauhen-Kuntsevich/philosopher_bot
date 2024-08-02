@@ -11,7 +11,7 @@ from constants.philosopher_bot_commands import BOT_COMMANDS
 from constants.messages import START_MESSAGE
 from constants.keyboards import topics_keyboard
 
-from data.quotes import topics
+from data.quotes import TOPICS
 
 from randomizers.quotes_randomizer import get_random_quote_by_topic
 
@@ -52,7 +52,7 @@ async def handle_help(message: types.Message):
 
 @dp.message()
 async def handle_topic_choice(message: types.Message):
-    if message.text in topics:
+    if message.text in TOPICS:
         random_quote = get_random_quote_by_topic(message.text)
         await message.answer(
             text=f"{random_quote.get('text')}\n\n<b>{random_quote.get('author')}</b>",
